@@ -19,17 +19,17 @@ app.get("/", (c) => {
 
 app.get("/.well-known/agent.json", (c) => {
   const baseUrl = new URL(c.req.url).origin;
-  return c.json({ name: SVC_NAME, description: "Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.", url: baseUrl, provider: { name: "HSH Intelligence", url: "https://github.com/hshintelligence" }, version: VERSION, skills: [], securitySchemes: { x402: { type: "x402", network: NETWORK, asset: "USDC" } } });
+  return c.json({ name: SVC_NAME, description: "Throwaway test service. Will be deleted within 10 min.", url: baseUrl, provider: { name: "HSH Intelligence", url: "https://github.com/hshintelligence" }, version: VERSION, skills: [], securitySchemes: { x402: { type: "x402", network: NETWORK, asset: "USDC" } } });
 });
 
 app.get("/schema.json", (c) => {
   const baseUrl = new URL(c.req.url).origin;
-  return c.json({ "@context": "https://schema.org", "@type": "Service", "name": SVC_NAME, "description": "Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.", "url": baseUrl, "provider": { "@type": "Organization", "name": "HSH Intelligence", "url": "https://github.com/hshintelligence" }, "license": "https://spdx.org/licenses/MIT", "serviceType": "test" });
+  return c.json({ "@context": "https://schema.org", "@type": "Service", "name": SVC_NAME, "description": "Throwaway test service. Will be deleted within 10 min.", "url": baseUrl, "provider": { "@type": "Organization", "name": "HSH Intelligence", "url": "https://github.com/hshintelligence" }, "license": "https://spdx.org/licenses/MIT", "serviceType": "test" });
 });
 
 app.get("/.well-known/ai-plugin.json", (c) => {
   const baseUrl = new URL(c.req.url).origin;
-  return c.json({ schema_version: "v1", name_for_human: SVC_NAME, name_for_model: SVC_ID.replace(/-/g, "_"), description_for_human: "Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.", description_for_model: "Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.", auth: { type: "none" }, api: { type: "openapi", url: `${baseUrl}/openapi.json` }, contact_email: "contact@healingsunhaven.com" });
+  return c.json({ schema_version: "v1", name_for_human: SVC_NAME, name_for_model: SVC_ID.replace(/-/g, "_"), description_for_human: "Throwaway test service. Will be deleted within 10 min.", description_for_model: "Throwaway test service. Will be deleted within 10 min.", auth: { type: "none" }, api: { type: "openapi", url: `${baseUrl}/openapi.json` }, contact_email: "contact@healingsunhaven.com" });
 });
 
 app.get("/.well-known/security.txt", (c) => {
@@ -39,7 +39,7 @@ app.get("/.well-known/security.txt", (c) => {
 
 app.get("/humans.txt", (c) => c.text(`/* TEAM */\n  Org: HSH Intelligence\n  Contact: contact@healingsunhaven.com\n  GitHub: https://github.com/hshintelligence\n\n/* SITE */\n  Service: ${SVC_NAME}\n  License: MIT\n`, 200, { "Content-Type": "text/plain; charset=utf-8" }));
 
-app.get("/.well-known/x402.json", (c) => c.json({ x402Version: 2, service: SVC_NAME, description: "Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.", payTo: PAY_TO, network: NETWORK, facilitator: FACILITATOR_URL, routes: [] }));
+app.get("/.well-known/x402.json", (c) => c.json({ x402Version: 2, service: SVC_NAME, description: "Throwaway test service. Will be deleted within 10 min.", payTo: PAY_TO, network: NETWORK, facilitator: FACILITATOR_URL, routes: [] }));
 app.get("/.well-known/x402", (c) => c.redirect("/.well-known/x402.json"));
 
 app.get("/services.json", async (c) => {
@@ -59,12 +59,12 @@ app.get("/broadcasts.json", async (c) => {
 
 app.get("/llms.txt", (c) => {
   const baseUrl = new URL(c.req.url).origin;
-  return c.text(`# ${SVC_NAME}\n\n> Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.\n\n## Endpoints\n- ${baseUrl}/mcp - MCP Streamable HTTP\n- ${baseUrl}/.well-known/agent.json - A2A Agent Card\n- ${baseUrl}/.well-known/x402.json - x402 manifest\n- ${baseUrl}/openapi.json - OpenAPI 3.1\n\n## Payment\nPay-per-call USDC on Base via x402 v2.\n`, 200, { "Content-Type": "text/plain; charset=utf-8" });
+  return c.text(`# ${SVC_NAME}\n\n> Throwaway test service. Will be deleted within 10 min.\n\n## Endpoints\n- ${baseUrl}/mcp - MCP Streamable HTTP\n- ${baseUrl}/.well-known/agent.json - A2A Agent Card\n- ${baseUrl}/.well-known/x402.json - x402 manifest\n- ${baseUrl}/openapi.json - OpenAPI 3.1\n\n## Payment\nPay-per-call USDC on Base via x402 v2.\n`, 200, { "Content-Type": "text/plain; charset=utf-8" });
 });
 
 app.get("/openapi.json", (c) => {
   const baseUrl = new URL(c.req.url).origin;
-  return c.json({ openapi: "3.1.0", info: { title: SVC_NAME, version: VERSION, description: "Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min." }, servers: [{ url: baseUrl }], paths: {} });
+  return c.json({ openapi: "3.1.0", info: { title: SVC_NAME, version: VERSION, description: "Throwaway test service. Will be deleted within 10 min." }, servers: [{ url: baseUrl }], paths: {} });
 });
 
 app.notFound((c) => c.json({ error: "not_found", service: SVC_NAME }, 404));

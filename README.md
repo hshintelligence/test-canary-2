@@ -2,7 +2,7 @@
 
 > Validation test for hsh-deploy after today's 9-layer expansion
 
-Throwaway test service to validate the upgraded hsh-deploy script. Will be deleted within 10 min.
+Throwaway test service. Will be deleted within 10 min.
 
 [![Powered by AgentScrape](https://raw.githubusercontent.com/hshintelligence/agent-scrape/main/assets/badges/x402-powered.svg)](https://www.x402.org)
 
